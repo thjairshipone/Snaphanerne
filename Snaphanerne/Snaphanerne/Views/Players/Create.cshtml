@@ -1,0 +1,53 @@
+﻿@model Snaphanerne.Models.Entity.Player
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Player</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => Model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @value="Name" } })*@
+                @Html.Editor("Player.Name", new { htmlAttributes = new { @class = "form-control", @value = "Name" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.THLevel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*<td>@Html.DropDownListFor(modelItem => model.MatchSize, ViewBag.SizeSelectList as List<SelectListItem>, "<-- Team Size -->")</td>*@
+                @*Html.DropDownListFor(model => model.THLevel, new SelectList(ViewBag.THLevels.Items), "<-- Town Hall Level -->")*@
+                @Html.DropDownList("Player.THLevel", new SelectList(ViewBag.THLevels.Items), "TH Level", new { htmlAttributes = new { @class = "form-control" } })
+                @*Html.EditorFor(model => model.THLevel, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*Html.DropDownList("THLevel", ViewBag.THLevels as List<SelectListItem>, "Town Hall")*@
+                @Html.ValidationMessageFor(model => model.THLevel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

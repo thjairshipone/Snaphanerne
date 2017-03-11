@@ -1,0 +1,50 @@
+﻿@model Snaphanerne.Models.Entity.Match
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Match</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opponent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opponent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prepare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prepare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherInformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherInformation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
